@@ -10,19 +10,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  int currentIndex = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _callPage(0),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(padding: EdgeInsets.only(left: 40)),
+            Text('QR app')
+          ],
+        ),
+        actions: [
+          IconButton(icon: Icon(Icons.delete), onPressed: () {})
+        ],
+      ),
+      body: _callPage(currentIndex),
       bottomNavigationBar: _crearBottomNavigationBar(),
-          );
-        }
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.filter_center_focus),
+        onPressed: () {
+          print("Hola mundo");
+        },
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
+      );
+  }
 
       Widget  _crearBottomNavigationBar() {
         return BottomNavigationBar(
-          currentIndex: 0,
-          onTap: (index) {},
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.map),
