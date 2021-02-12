@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:qrreaderapp/src/pages/direcciones_page.dart';
 import 'package:qrreaderapp/src/pages/mapas_page.dart';
 
+import 'package:qrcode_reader/qrcode_reader.dart';
+// import 'package:qrcode_reader/QRCodeReader.dart';
+
+// import 'package:qrscan/qrscan.dart' as scanner;
+// import 'package:barras/barras.dart';
+
+
+
 // para poder cambiar los valores de un bottomnaviagationBar se necesita usar un statefull widget
 // y esto es porque los valores seŕan modificados en tiempo de ejecución
 class HomePage extends StatefulWidget {
@@ -31,9 +39,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: () {
-          print("Hola mundo");
-        },
+        onPressed: _scanQR,
         backgroundColor: Theme.of(context).primaryColor,
       ),
       );
@@ -68,5 +74,26 @@ class _HomePageState extends State<HomePage> {
       default:
         return MapasPage();
     }
+  }
+
+  _scanQR() async{
+    
+    // String cameraScanResult = await scanner.scanPhoto();
+    
+    String futureString = '';
+    // Future<String> futureString = new QRCodeReader().scan();
+    try {
+      futureString = await new QRCodeReader().scan();
+    }catch(e) {
+      futureString = e.toString();
+    }
+
+    // print('futureString: $futureString');
+
+    if( futureString != null ) {
+      print('Tenemos información');
+    }
+    
+
   }
 }
