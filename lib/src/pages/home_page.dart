@@ -77,22 +77,27 @@ class _HomePageState extends State<HomePage> {
   }
 
   _scanQR() async{
-    
+
+    // Datos de prueba
+    // http://maps.google.com/maps?q=51.4170326,5.4451063
+    // https://articulo.mercadolibre.com.mx/MLM-767746830-guitarra-acustica-yamaha-c40-envio-gratis-meses-sin-interes-_JM?matt_tool=28238160&utm_source=google_shopping&utm_medium=organic
+
+
     // String cameraScanResult = await scanner.scanPhoto();
     
     String futureString = '';
     // Future<String> futureString = new QRCodeReader().scan();
-    try {
-      futureString = await new QRCodeReader().scan();
-    }catch(e) {
-      futureString = e.toString();
-    }
+    // try {
+    //   futureString = await new QRCodeReader().scan();
+    // }catch(e) {
+    //   futureString = e.toString();
+    // }
 
     // print('futureString: $futureString');
 
-    if( futureString != null ) {
-      print('Tenemos información');
-    }
+    // if( futureString != null ) {
+    //   print('Tenemos información');
+    // }
     
 
   }
