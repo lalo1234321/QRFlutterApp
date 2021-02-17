@@ -3,6 +3,7 @@ import 'package:qrreaderapp/src/pages/direcciones_page.dart';
 import 'package:qrreaderapp/src/pages/mapas_page.dart';
 
 import 'package:qrcode_reader/qrcode_reader.dart';
+import 'package:qrreaderapp/src/providers/db_provider.dart';
 // import 'package:qrcode_reader/QRCodeReader.dart';
 
 // import 'package:qrscan/qrscan.dart' as scanner;
@@ -85,7 +86,8 @@ class _HomePageState extends State<HomePage> {
 
     // String cameraScanResult = await scanner.scanPhoto();
     
-    String futureString = '';
+    String futureString = 'https://articulo.mercadolibre.com.mx/MLM-767746830-guitarra-acustica-yamaha-c40-envio-gratis-meses-sin-interes-_JM?matt_tool=28238160&utm_source=google_shopping&utm_medium=organic';
+    
     // Future<String> futureString = new QRCodeReader().scan();
     // try {
     //   futureString = await new QRCodeReader().scan();
@@ -95,9 +97,10 @@ class _HomePageState extends State<HomePage> {
 
     // print('futureString: $futureString');
 
-    // if( futureString != null ) {
-    //   print('Tenemos información');
-    // }
+    if( futureString != null ) {
+      final scan = ScanModel(valor: futureString);
+      DBProvider.db.nuevoScan(scan);
+    }
     
 
   }
