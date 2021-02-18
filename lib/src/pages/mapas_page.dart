@@ -34,6 +34,7 @@ class MapasPage extends StatelessWidget {
             child: ListTile(
               leading: Icon(Icons.cloud,color: Theme.of(context).primaryColor,),
               title: Text( scans[i].valor ),
+              subtitle: Text( 'ID: ${scans[i].id}' ),
               trailing: Icon( Icons.keyboard_arrow_right, color: Colors.grey, ),
             ),
           ),
